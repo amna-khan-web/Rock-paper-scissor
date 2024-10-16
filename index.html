@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-decoration-line: underline; color: rgb(61, 4, 61);">Rock || Paper || Scissors</h1>
+        <div class="choices">
+            <button id="rock" onclick="play('rock')"> 💎 Rock</button>
+            <button id="paper" onclick="play('paper')">📃Paper</button>
+            <button id="scissors" onclick="play('scissors')">✂ Scissors</button>
+        </div>
+        <div class="result">
+            <h3 id="resultText">Choose an option to play!</h3>
+            <p id="playerChoice"></p>
+            <p id="computerChoice"></p>
+        </div>
+    </div>
+
+    <script>
+        function play(playerSelection) {
+            const choices = ['rock', 'paper', 'scissors'];
+            const computerSelection = choices[Math.floor(Math.random() * 3)];
+            const resultText = document.getElementById('resultText');
+            const playerChoice = document.getElementById('playerChoice');
+            const computerChoice = document.getElementById('computerChoice');
+
+            playerChoice.textContent = `You choose: ${playerSelection}`;
+            computerChoice.textContent =` Computer choose: ${computerSelection}`;
+
+            if (playerSelection === computerSelection) {
+                resultText.textContent = "🕴It's a tie!";
+            } else if (
+                (playerSelection === 'rock' && computerSelection === 'scissors') ||
+                (playerSelection === 'scissors' && computerSelection === 'paper') ||
+                (playerSelection === 'paper' && computerSelection === 'rock')
+            ) {
+                resultText.textContent = "🤗✌You win!";
+            } else {
+                resultText.textContent = "😕You lose!";
+            }
+        }
+    </script>
+</body>
+</html>
